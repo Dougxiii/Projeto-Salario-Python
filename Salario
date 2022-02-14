@@ -1,0 +1,54 @@
+'''Escreva um programa que solicite do usuário o valor do salário bruto e a quantidade de dependentes de um funcionário. Para cada dependente o funcionário receberá um acréscimo de R$ 200,00. E sabendo que o valor do imposto de renda segue a seguinte tabela:
+
+Salário até R$ 1.500,00 - imposto de 10%
+
+Salário até R$ 3.500,00 - imposto de 12,5%
+
+Salário até R$ 5.500,00 - imposto de 15%
+
+Salário acima de R$ 5.500,00 - imposto de 20%
+
+
+
+Observação: O imposto é aplicado somente sobre o salário. A contribuição por dependente não é tributada.
+
+
+
+O programa deve calcular o salário líquido do funcionário.'''
+
+
+def recebe():
+    salario_bruto = float(input("Salario bruto: "))
+    dependentes = int(input("Dependentes: "))
+    return salario_bruto, dependentes
+
+
+def liquido(salario_bruto, dependentes):
+    '''Valor adicional dos dependentes'''
+    valor_dependentes = dependentes * 200
+
+    '''//valor do imposto'''
+    if (salario_bruto <= 1500):
+        imposto = salario_bruto * 0.10
+    elif (salario_bruto <= 3500):
+        imposto = salario_bruto * 0.125
+    elif (salario_bruto <= 5500):
+        imposto = salario_bruto * 0.15
+    elif (salario_bruto > 5500):
+        imposto = salario_bruto * 0.20
+
+    valor_final = (salario_bruto - imposto + valor_dependentes)
+
+    return valor_final
+
+
+def imprimir(valor_final):
+    print("O salario liquido é R${}".format(valor_final))
+    return
+
+
+# main
+
+salario_bruto, dependentes = recebe()
+valor_final = liquido(salario_bruto, dependentes)
+imprimir(valor_final)
